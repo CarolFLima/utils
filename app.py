@@ -16,6 +16,12 @@ def index():
         return render_template('index.html', params=params)
 
 
+@app.route('/financiamento/', methods=['GET', 'POST'])
+def financiamento():
+    if request.method == 'GET':
+        return render_template('amortizacao.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
