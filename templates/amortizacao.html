@@ -13,13 +13,15 @@
   <body>
     <div class="container">
       <h1>Sistema de amortização</h1>
-      <form role="form" method='POST' action='/'>
+      <form role="form" method='POST' action='/financiamento/'>
         <div class="form-group">
-          <input type="text" name="url" class="form-control" id="url-box" placeholder="Total financiado" style="max-width: 300px;" autofocus required>
+          <input type="text" name="valor" class="form-control" id="url-box" placeholder="Total financiado" style="max-width: 300px;" autofocus required>
+          <input type="text" name="meses" class="form-control" id="url-box" placeholder="Meses" style="max-width: 70px;" >
+          <input type="text" name="juros" class="form-control" id="url-box" placeholder="Taxa de Juros" style="max-width: 300px;" >
         </div>
         <button type="submit" class="btn btn-default">Calcular</button>
       </form>
-      <table>
+      <table style="width:800px">
         <tr>
             <td># Parcela</td>
             <td>Valor</td>
@@ -27,13 +29,15 @@
             <td>Juros</td>
             <td>Saldo devedor</td>
         </tr>
+        {% for parcela in parcelas %}
         <tr>
-            <td>1</td>
-            <td>921,18</td>
-            <td>277,77</td>
-            <td>643,40</td>
-            <td>99.722,22</td>
+            <td>{{ parcela.id }}</td>
+            <td>{{ parcela.valor }}</td>
+            <td>{{ parcela.amortizacao }}</td>
+            <td>{{ parcela.juros }}</td>
+            <td>{{ parcela.saldo }}</td>
         </tr>
+        {% endfor %}
     </table>
 
     </div>
