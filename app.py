@@ -37,12 +37,12 @@ def financiamento():
 
         parcelas = []
         saldo_d = valor 
-        amortizacao_m = round(valor/meses, 2)
+        amortizacao_m = valor/meses
         for i in range(meses):
-            juros_parcela = round(saldo_d * juros_m, 2)
-            parcela_m = round(juros_parcela + amortizacao_m, 2)
-            saldo_d = round(saldo_d - amortizacao_m, 2)
-            parcela = Parcela(id=i+1, valor=parcela_m, saldo=saldo_d, amortizacao=amortizacao_m, juros=juros_parcela)
+            juros_parcela = saldo_d * juros_m
+            parcela_m = juros_parcela + amortizacao_m
+            saldo_d = saldo_d - amortizacao_m
+            parcela = Parcela(id=i+1, valor=round(parcela_m, 2), saldo=round(saldo_d, 2), amortizacao=round(amortizacao_m, 2), juros=round(juros_parcela, 2))
             parcelas.append(parcela)
             
             
